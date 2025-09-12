@@ -16,7 +16,7 @@ def Ball():
     d=request.form
     ime1 =d.get("ime1").lower()
 
-    if "!" in ime1:
+    if ime1[-1] == "!":
         rez = "Ne kriči."
         return render_template("index.html",rezultat = rez)
 
