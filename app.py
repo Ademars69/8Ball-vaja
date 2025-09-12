@@ -9,18 +9,40 @@ def hello_world():
 @app.route("/Ball", methods = ["POST"])
 def Ball():
 
-    sez=["Da","Ne","Mogoče","Vprašaj kasneje"]
+    sez=["Da.","Ne.","Mogoče.","Vprašaj kasneje."]
     
     
     
     d=request.form
     ime1 =d.get("ime1").lower()
 
-        
+    if "!" in ime1:
+        rez = "Ne kriči."
+        return render_template("index.html",rezultat = rez)
+
+    if "ljubezen" in ime1:
+        rez = "Kupi raje GPU."
+        return render_template("index.html",rezultat = rez)
     
-    rez =  random.choice(sez)
-    return render_template("index.html",rezultat = rez)
-           
+    if "vikend" in ime1:
+        rez = "TikTok all day."
+        return render_template("index.html",rezultat = rez)
+
+    if "denar" in ime1:
+        rez = "Burek only."
+        return render_template("index.html",rezultat = rez)
+
+    if "profesor" in ime1:
+        rez = "F speedrun."
+        return render_template("index.html",rezultat = rez)
+
+    
+
+
+    else:
+        rez =  random.choice(sez)
+        return render_template("index.html",rezultat = rez)
+            
 
 
 app.run(debug=True)
